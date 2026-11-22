@@ -1,11 +1,11 @@
 # .sofia/project.yaml — Project Manifest for SOFIA (design §2.11).
 schema_version: 1
 project:
-  name: weather-demo
-  description: Demo — one static HTML page with a weather forecast for Kyiv for the coming week
+  name: sandbox-demo
+  description: Sandbox for SOFIA demo tasks (first: one static HTML page with a weather forecast for Kyiv)
 repo:
   host: github
-  slug: yevhenhrushko/sofia-weather-demo
+  slug: yevhenhrushko/sandbox_demo
   base_branch: main
 publish:
   branch_prefix: sofia/
