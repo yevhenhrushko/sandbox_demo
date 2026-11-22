@@ -2,7 +2,7 @@
 schema_version: 1
 project:
   name: sandbox-demo
-  description: Sandbox for SOFIA demo tasks (first: one static HTML page with a weather forecast for Kyiv)
+  description: "Sandbox for SOFIA demo tasks; the first one is a static HTML page with a weather forecast for Kyiv"
 repo:
   host: github
   slug: yevhenhrushko/sandbox_demo
