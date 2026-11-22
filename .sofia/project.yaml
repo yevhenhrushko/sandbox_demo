@@ -1,8 +1,8 @@
-# .sofia/project.yaml — Project Manifest for SOFIA (design §2.11).
+# .sofia/project.yaml — Project Manifest for SOFIA (design §2.11, schema: brain/src/sofia_core/project_manifest.py).
 schema_version: 1
 project:
   name: sandbox-demo
-  description: "Sandbox for SOFIA demo tasks; the first one is a static HTML page with a weather forecast for Kyiv"
+  description: "Sandbox for SOFIA demo tasks: small static pages with their tests"
 repo:
   host: github
   slug: yevhenhrushko/sandbox_demo
@@ -10,29 +10,28 @@ repo:
 publish:
   branch_prefix: sofia/
   draft: true
+  author: "Yevhen H. <yevhen.hrushko@gmail.com>"
 paths:
   allowed: [site/, tests/]
   tests: [tests/]
 checks:
   - name: unit
     run: python3 -m pytest -q tests --junitxml=reports/junit.xml
-    junit: reports/*.xml
+    junit: reports/junit.xml
     timeout_min: 10
     before_code: true
 quality:
-  max_function_lines: 80
-  max_complexity: 15
-  max_duplicate_lines: 12
-  max_change_lines: 600
+  # one static page with inline CSS and its tests is a few hundred lines; the default 600 is too tight for it
+  max_change_lines: 1500
 review:
   checklist:
-    matches-requirements: the page does what each requirement says, nothing more
-    readable-page: the page is readable on a phone and a desktop width, no broken layout
+    matches-requirements: the page does what each requirement says
+    readable-page: the page is readable at phone and desktop widths, no broken layout
     tests-meaningful: each new test checks a requirement and fails if the page breaks it
     no-network: the page and the tests make no network calls; the data is in the page
-mutants:
-  enabled: false
-autonomy:
-  floors: {}
-git:
-  submodules_allowed: false
+    no-secrets: no secret value, token or password in the change
+roles:
+  analyst:
+    skills: [ui-ux-pro-max]
+  developer:
+    skills: [ui-ux-pro-max]
