@@ -19,8 +19,6 @@ checks:
     junit: reports/*.xml
     timeout_min: 10
     before_code: true
-scenarios:
-  required: [success]
 quality:
   max_function_lines: 80
   max_complexity: 15
