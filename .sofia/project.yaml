@@ -26,6 +26,12 @@ quality:
   max_complexity: 15
   max_duplicate_lines: 12
   max_change_lines: 600
+review:
+  checklist:
+    matches-requirements: the page does what each requirement says, nothing more
+    readable-page: the page is readable on a phone and a desktop width, no broken layout
+    tests-meaningful: each new test checks a requirement and fails if the page breaks it
+    no-network: the page and the tests make no network calls; the data is in the page
 mutants:
   enabled: false
 autonomy:
