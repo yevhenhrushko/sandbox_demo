@@ -1,0 +1,34 @@
+# .sofia/project.yaml — Project Manifest for SOFIA (design §2.11).
+schema_version: 1
+project:
+  name: weather-demo
+  description: Demo — one static HTML page with a weather forecast for Kyiv for the coming week
+repo:
+  host: github
+  slug: yevhenhrushko/sofia-weather-demo
+  base_branch: main
+publish:
+  branch_prefix: sofia/
+  draft: true
+paths:
+  allowed: [site/, tests/]
+  tests: [tests/]
+checks:
+  - name: unit
+    run: python3 -m pytest -q tests --junitxml=reports/junit.xml
+    junit: reports/*.xml
+    timeout_min: 10
+    before_code: true
+scenarios:
+  required: [success]
+quality:
+  max_function_lines: 80
+  max_complexity: 15
+  max_duplicate_lines: 12
+  max_change_lines: 600
+mutants:
+  enabled: false
+autonomy:
+  floors: {}
+git:
+  submodules_allowed: false
